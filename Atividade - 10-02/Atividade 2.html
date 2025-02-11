@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 2</title>
+    <script language="JavaScript" type="text/JavaScript">
+        const num = parseInt(prompt("Digite um número: "), 10);
+
+        if (num <= 1) {
+            alert(num + " não é um número primo.");
+        } else if (num === 2 || num === 3) {
+            alert(num + " é um número primo.");
+        } else if (num % 2 === 0 || num % 3 === 0) {
+            alert(num + " não é um número primo.");
+        } else {
+            let divisor = 0;
+            for (let i = 5; i * i <= num; i += 2) {
+                if (num % i === 0) {
+                    divisor = i;
+                    break;
+                }
+            }
+    
+            if (divisor) {
+                alert(num + " não é um número primo.");
+            } else {
+                alert(num + " é um número primo.");
+            }
+        }       
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>
