@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 4</title>
+</head>
+<body>
+
+<script>
+    let dado = prompt("Digite algo:");
+
+    if (dado !== null) { 
+        const confirmar = confirm("Deseja verificar o tipo do dado informado?");
+        
+        if (confirmar) {
+            
+            if (!isNaN(dado) && dado.trim() !== "") {
+                dado = Number(dado);
+            } else if (dado.toLowerCase() === "true" || dado.toLowerCase() === "false") {
+                dado = (dado.toLowerCase() === "true"); 
+            }
+            
+            document.body.innerHTML = `<h2>O tipo do dado é: ${typeof dado}</h2>`;
+        } else {
+            document.body.innerHTML = `<h2>Obrigado por visitar esta página</h2>`;
+        }
+    }
+</script>
+
+</body>
+</html>
