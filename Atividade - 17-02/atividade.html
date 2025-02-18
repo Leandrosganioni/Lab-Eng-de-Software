@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 2</title>
+    <script language="JavaScript" type="text/JavaScript">
+
+        const diasSemana = ['domingo', 'segunda-feira', 'terça-feira', 'quarta-feira', 'quinta-feira', 'sexta-feira', 'sábado'];
+        const mesesAno = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
+
+        const dataAtual = new Date();
+        const diaSemana = diasSemana[dataAtual.getDay()];
+        const dia = dataAtual.getDate();
+        const mes = mesesAno[dataAtual.getMonth()];
+        const ano = dataAtual.getFullYear();
+
+        const dataFormatada = `${diaSemana}, ${dia} de ${mes} de ${ano}`;
+        alert(dataFormatada)
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
