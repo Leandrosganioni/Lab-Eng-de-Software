@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 3</title>
+</head>
+<body>
+    <h2>Verificador de Palíndromos</h2>
+    <input type="text" id="texto" placeholder="Digite uma palavra ou frase">
+    <button onclick="verificarPalindromo()">Verificar</button>
+
+    <script language="JavaScript" type="text/JavaScript">
+        function limparTexto(texto) {
+            return texto
+                .toLowerCase()
+                .replace(/[\s\W_]/g, '') 
+                .normalize("NFD").replace(/[\u0300-\u036f]/g, '');
+        }
+
+        function verificarPalindromo() {
+            let texto = document.getElementById("texto").value;
+            let textoLimpo = limparTexto(texto);
+            let textoInvertido = textoLimpo.split("").reverse().join("");
+
+            if (textoLimpo === textoInvertido) {
+                alert("É um palíndromo!");
+            } else {
+                alert("Não é um palíndromo!");
+            }
+        }
+    </script>
+</body>
+</html>
