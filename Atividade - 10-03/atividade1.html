@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulários de Cadastro</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Formulário de Cadastro</h1>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="tipoCadastro" id="aluno" checked>
+            <label class="form-check-label" for="aluno">
+                Aluno
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="tipoCadastro" id="professor">
+            <label class="form-check-label" for="professor">
+                Professor
+            </label>
+        </div>
+
+        <form id="formAluno" class="mt-3">
+            <div class="mb-3">
+                <label for="nomeAluno" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="nomeAluno" placeholder="Digite seu nome completo" required>
+            </div>
+            <div class="mb-3">
+                <label for="emailAluno" class="form-label">Email</label>
+                <input type="email" class="form-control" id="emailAluno" placeholder="fulano@example.com" required>
+            </div>
+            <div class="mb-3">
+                <label for="dataNascimentoAluno" class="form-label">Data de Nascimento</label>
+                <input type="date" class="form-control" id="dataNascimentoAluno" required>
+            </div>
+            <div class="mb-3">
+                <label for="telefoneFixoAluno" class="form-label">Telefone Fixo</label>
+                <input type="text" class="form-control" id="telefoneFixoAluno" placeholder="(99) 9999-9999" required>
+            </div>
+            <div class="mb-3">
+                <label for="telefoneCelularAluno" class="form-label">Telefone Celular</label>
+                <input type="text" class="form-control" id="telefoneCelularAluno" placeholder="(99) 99999-9999" required>
+            </div>
+            <div class="mb-3">
+                <label for="cursoAluno" class="form-label">Curso</label>
+                <input type="text" class="form-control" id="cursoAluno" placeholder="Digite seu curso" required>
+            </div>
+            <div class="mb-3">
+                <label for="matriculaAluno" class="form-label">Matrícula</label>
+                <input type="text" class="form-control" id="matriculaAluno" placeholder="Digite sua matrícula" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+
+        <form id="formProfessor" class="mt-3" style="display: none;">
+            <div class="mb-3">
+                <label for="nomeProfessor" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="nomeProfessor" placeholder="Digite seu nome completo" required>
+            </div>
+            <div class="mb-3">
+                <label for="emailProfessor" class="form-label">Email</label>
+                <input type="email" class="form-control" id="emailProfessor" placeholder="fulano@example.com" required>
+            </div>
+            <div class="mb-3">
+                <label for="dataNascimentoProfessor" class="form-label">Data de Nascimento</label>
+                <input type="date" class="form-control" id="dataNascimentoProfessor" required>
+            </div>
+            <div class="mb-3">
+                <label for="telefoneFixoProfessor" class="form-label">Telefone Fixo</label>
+                <input type="text" class="form-control" id="telefoneFixoProfessor" placeholder="(99) 9999-9999" required>
+            </div>
+            <div class="mb-3">
+                <label for="telefoneCelularProfessor" class="form-label">Telefone Celular</label>
+                <input type="text" class="form-control" id="telefoneCelularProfessor" placeholder="(99) 99999-9999" required>
+            </div>
+            <div class="mb-3">
+                <label for="areaProfessor" class="form-label">Área de Atuação</label>
+                <input type="text" class="form-control" id="areaProfessor" placeholder="Digite sua área de atuação" required>
+            </div>
+            <div class="mb-3">
+                <label for="matriculaProfessor" class="form-label">Matrícula</label>
+                <input type="text" class="form-control" id="matriculaProfessor" placeholder="Digite sua matrícula" required>
+            </div>
+            <div class="mb-3">
+                <label for="lattesProfessor" class="form-label">Lattes</label>
+                <input type="text" class="form-control" id="lattesProfessor" placeholder="Digite o endereço do seu Lattes" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+
+        <!-- Área para exibir os dados -->
+        <div id="saidaDados" class="mt-4 p-3 bg-light border rounded">
+            <h3>Dados Enviados:</h3>
+            <pre id="dadosExibidos"></pre>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const formAluno = document.getElementById('formAluno');
+            const formProfessor = document.getElementById('formProfessor');
+            const alunoRadio = document.getElementById('aluno');
+            const professorRadio = document.getElementById('professor');
+            const dadosExibidos = document.getElementById('dadosExibidos');
+
+            alunoRadio.addEventListener('change', function() {
+                formAluno.style.display = 'block';
+                formProfessor.style.display = 'none';
+            });
+
+            professorRadio.addEventListener('change', function() {
+                formAluno.style.display = 'none';
+                formProfessor.style.display = 'block';
+            });
+
+            formAluno.addEventListener('submit', function(event) {
+                event.preventDefault();
+                const dados = {
+                    nome: document.getElementById('nomeAluno').value,
+                    email: document.getElementById('emailAluno').value,
+                    dataNascimento: document.getElementById('dataNascimentoAluno').value,
+                    telefoneFixo: document.getElementById('telefoneFixoAluno').value,
+                    telefoneCelular: document.getElementById('telefoneCelularAluno').value,
+                    curso: document.getElementById('cursoAluno').value,
+                    matricula: document.getElementById('matriculaAluno').value
+                };
+                dadosExibidos.textContent = JSON.stringify(dados, null, 2);
+            });
+
+            formProfessor.addEventListener('submit', function(event) {
+                event.preventDefault();
+                const dados = {
+                    nome: document.getElementById('nomeProfessor').value,
+                    email: document.getElementById('emailProfessor').value,
+                    dataNascimento: document.getElementById('dataNascimentoProfessor').value,
+                    telefoneFixo: document.getElementById('telefoneFixoProfessor').value,
+                    telefoneCelular: document.getElementById('telefoneCelularProfessor').value,
+                    area: document.getElementById('areaProfessor').value,
+                    matricula: document.getElementById('matriculaProfessor').value,
+                    lattes: document.getElementById('lattesProfessor').value
+                };
+                dadosExibidos.textContent = JSON.stringify(dados, null, 2);
+            });
+        });
+    </script>
+</body>
+</html>
