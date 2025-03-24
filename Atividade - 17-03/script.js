@@ -1,9 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     const container = document.getElementById('counter-container');
     
-    
-
-
     const counterDiv = document.createElement('div');
     counterDiv.style.fontFamily = 'Arial, sans-serif';
     counterDiv.style.maxWidth = '300px';
@@ -13,12 +10,10 @@ document.addEventListener("DOMContentLoaded", function() {
     counterDiv.style.boxShadow = '0 0 10px rgba(0,0,0,0.1)';
     counterDiv.style.borderRadius = '10px';
     
-    
     const totalTitle = document.createElement('h2');
     totalTitle.textContent = 'Total';
     totalTitle.style.marginBottom = '5px';
     totalTitle.style.color = '#333';
-    
     
     const totalCount = document.createElement('div');
     totalCount.id = 'total-count';
@@ -28,30 +23,20 @@ document.addEventListener("DOMContentLoaded", function() {
     totalCount.style.marginBottom = '20px';
     totalCount.style.color = '#2c3e50';
     
-    
     const genderCounters = document.createElement('div');
     genderCounters.style.display = 'flex';
     genderCounters.style.justifyContent = 'space-around';
     genderCounters.style.marginBottom = '20px';
-    
-    
-    const warning = document.createElement('p');
-    warning.textContent = 'Clique nas imagens praa adicionar um dos gêneros a conta';
-    warning.style.fontSize = '12px';
-    warning.style.color = '#666';
-    warning.style.marginTop = '20px';
-    warning.style.fontStyle = 'italic';
 
     function createGenderCounter(gender, imageSrc) {
         const genderDiv = document.createElement('div');
         
-        
+    
         const img = document.createElement('img');
         img.src = imageSrc;
         img.alt = gender;
         img.style.width = '50px';
         img.style.height = '50px';
-        img.style.cursor = 'pointer';
         
         
         const count = document.createElement('div');
@@ -60,11 +45,22 @@ document.addEventListener("DOMContentLoaded", function() {
         count.style.fontSize = '24px';
         count.style.margin = '10px 0';
         
-        
+
         const controls = document.createElement('div');
         controls.style.display = 'flex';
         controls.style.justifyContent = 'center';
         controls.style.gap = '10px';
+        
+        
+        const increaseBtn = document.createElement('button');
+        increaseBtn.textContent = '+';
+        increaseBtn.style.fontSize = '16px';
+        increaseBtn.style.padding = '2px 10px';
+        increaseBtn.style.border = 'none';
+        increaseBtn.style.backgroundColor = '#2ecc71';
+        increaseBtn.style.color = 'white';
+        increaseBtn.style.borderRadius = '5px';
+        increaseBtn.style.cursor = 'pointer';
         
         
         const decreaseBtn = document.createElement('button');
@@ -88,6 +84,7 @@ document.addEventListener("DOMContentLoaded", function() {
         resetBtn.style.borderRadius = '5px';
         resetBtn.style.cursor = 'pointer';
         
+        controls.appendChild(increaseBtn);
         controls.appendChild(decreaseBtn);
         controls.appendChild(resetBtn);
         
@@ -102,17 +99,14 @@ document.addEventListener("DOMContentLoaded", function() {
         genderDiv.appendChild(controls);
         genderDiv.appendChild(label);
         
-        
-        return { genderDiv, img, count, decreaseBtn, resetBtn };
+        return { genderDiv, count, increaseBtn, decreaseBtn, resetBtn };
     }
-    
     
     const maleCounter = createGenderCounter('Homens', 'male.png');
     const femaleCounter = createGenderCounter('Mulheres', 'female.png');
     
     genderCounters.appendChild(maleCounter.genderDiv);
     genderCounters.appendChild(femaleCounter.genderDiv);
-    
     
     const globalResetBtn = document.createElement('button');
     globalResetBtn.textContent = 'Reset Geral';
@@ -125,30 +119,26 @@ document.addEventListener("DOMContentLoaded", function() {
     globalResetBtn.style.cursor = 'pointer';
     globalResetBtn.style.marginTop = '20px';
     
-    
     counterDiv.appendChild(totalTitle);
     counterDiv.appendChild(totalCount);
     counterDiv.appendChild(genderCounters);
     counterDiv.appendChild(globalResetBtn);
-    counterDiv.appendChild(warning);
-   
-    container.appendChild(counterDiv);
     
+    container.appendChild(counterDiv);
     
     let count = 0;
     let maleCountValue = 0;
     let femaleCountValue = 0;
     
-   
     function updateCounters() {
         totalCount.textContent = count;
         maleCounter.count.textContent = maleCountValue;
         femaleCounter.count.textContent = femaleCountValue;
     }
     
-   
-    maleCounter.img.addEventListener('click', function() {
-        if (maleCountValue < 99) { 
+
+    maleCounter.increaseBtn.addEventListener('click', function() {
+        if (maleCountValue < 99) {
             count++;
             maleCountValue++;
             updateCounters();
@@ -169,9 +159,9 @@ document.addEventListener("DOMContentLoaded", function() {
         updateCounters();
     });
     
-   
-    femaleCounter.img.addEventListener('click', function() {
-        if (femaleCountValue < 99) { 
+
+    femaleCounter.increaseBtn.addEventListener('click', function() {
+        if (femaleCountValue < 99) {
             count++;
             femaleCountValue++;
             updateCounters();
@@ -192,13 +182,11 @@ document.addEventListener("DOMContentLoaded", function() {
         updateCounters();
     });
     
-  
+    // Evento para reset geral
     globalResetBtn.addEventListener('click', function() {
         count = 0;
         maleCountValue = 0;
         femaleCountValue = 0;
         updateCounters();
     });
-
-    
 });
