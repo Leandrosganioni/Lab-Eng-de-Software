@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Efeito de Digitação</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.22.15/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    
+    <script type="text/babel">
+
+        function MensagemDigitada() {
+            const [texto, setTexto] = React.useState("");
+            const mensagem = "Venha estudar na FATEC!";
+
+            React.useEffect(() => {
+                let i = 0;
+                const digitando = setInterval(() => {
+                    if (i < mensagem.length) {
+                        setTexto(mensagem.slice(0, i + 1));
+                        i++;
+                    } else {
+                        clearInterval(digitando);
+                    }
+                }, 100);
+
+                return () => clearInterval(digitando);
+            }, []);
+
+            return <h1>{texto}</h1>;
+        }
+
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<MensagemDigitada />);
+    </script>
+</body>
+</html>
