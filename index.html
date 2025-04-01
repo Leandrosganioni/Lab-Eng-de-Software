@@ -4,16 +4,126 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Semanas</title>
+    <style>
+        /* Estilos gerais */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        /* Container principal */
+        .container {
+            width: 90%;
+            max-width: 800px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            box-sizing: border-box;
+        }
+        
+        /* Título */
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+        
+        /* Lista ordenada */
+        ol {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            counter-reset: semana-counter;
+        }
+        
+        /* Itens da lista */
+        ol li {
+            counter-increment: semana-counter;
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 60px;
+            transition: transform 0.3s ease;
+        }
+        
+        ol li:hover {
+            transform: translateX(5px);
+        }
+        
+        /* Números personalizados */
+        ol li::before {
+            content: counter(semana-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Links */
+        a {
+            display: block;
+            padding: 15px 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        a:hover {
+            background-color: #e9ecef;
+            color: #1a73e8;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Responsividade */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+                width: 95%;
+            }
+            
+            ol li {
+                padding-left: 50px;
+            }
+            
+            a {
+                padding: 12px 15px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <ol>
-        <li><a href="semana1.html">Semana 1</a></li>
-        <li><a href="semana2.html">Semana 2</a></li>
-        <li><a href="semana3.html">Semana 3</a></li>
-        <li><a href="semana4.html">Semana 4</a></li>
-        <li><a href="semana5.html">Semana 5</a></li>
-        <li><a href="semana6.html">Semana 6</a></li>
-        <li><a href="semana7.html">Semana 7</a></li>
-    </ol>
+    <div class="container">
+        <h1>Lista de Semanas</h1>
+        <ol>
+            <li><a href="semana1.html">Semana 1</a></li>
+            <li><a href="semana2.html">Semana 2</a></li>
+            <li><a href="semana3.html">Semana 3</a></li>
+            <li><a href="semana4.html">Semana 4</a></li>
+            <li><a href="semana5.html">Semana 5</a></li>
+            <li><a href="semana6.html">Semana 6</a></li>
+            <li><a href="semana7.html">Semana 7</a></li>
+        </ol>
+    </div>
 </body>
 </html>
